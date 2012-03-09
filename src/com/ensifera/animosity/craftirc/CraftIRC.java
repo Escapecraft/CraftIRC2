@@ -434,7 +434,7 @@ public class CraftIRC extends JavaPlugin {
     public void sendMessageToTag(String message, String tag) {
         RelayedMessage rm = newMsg(EndPoint.PLUGIN, EndPoint.IRC);
         rm.message = message;
-        this.sendMessage(rm, tag, "custom");
+        this.sendMessage(rm, tag, null);
     }
     
     /** TODO: MAKE THIS
