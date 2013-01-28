@@ -8,6 +8,7 @@ import java.util.Set;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.conversations.Conversation;
+import org.bukkit.conversations.ConversationAbandonedEvent;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionAttachment;
 import org.bukkit.permissions.PermissionAttachmentInfo;
@@ -114,6 +115,10 @@ public class IRCConsoleCommandSender implements ConsoleCommandSender {
 
     public void abandonConversation(Conversation arg0) {
         sender.abandonConversation(arg0);
+    }
+
+    public void abandonConversation(Conversation arg0, ConversationAbandonedEvent arg1) {
+        sender.abandonConversation(arg0, arg1);
     }
 
     public void acceptConversationInput(String arg0) {

@@ -9,14 +9,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.milkbowl.vault.chat.Chat;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.v1_4_R1.DedicatedServer;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.craftbukkit.CraftServer;
+import org.bukkit.craftbukkit.v1_4_R1.CraftServer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -45,7 +45,7 @@ public class CraftIRC extends JavaPlugin {
     //Misc class attributes
     PluginDescriptionFile desc = null;
     public Server server = null;
-    private MinecraftServer console;
+    private DedicatedServer console;
     private final CraftIRCListener listener = new CraftIRCListener(this);
     private ArrayList<Minebot> instances;
     private boolean debug;
@@ -71,7 +71,7 @@ public class CraftIRC extends JavaPlugin {
            
             Field cfield = CraftServer.class.getDeclaredField("console");
             cfield.setAccessible(true);
-            console = (MinecraftServer) cfield.get((CraftServer)getServer());
+            console = (DedicatedServer) cfield.get((CraftServer)getServer());
             
             bots = new ArrayList<ConfigurationNode>(configuration.getNodeList("bots", null));
             colormap = new ArrayList<ConfigurationNode>(configuration.getNodeList("colormap", null));
