@@ -53,7 +53,9 @@
   <build>
     <directory>target</directory>
     <outputDirectory>target/classes</outputDirectory>
+<!--
     <finalName>${project.artifactId}</finalName>
+-->
     <sourceDirectory>src</sourceDirectory>
     <defaultGoal>clean install</defaultGoal>
     
