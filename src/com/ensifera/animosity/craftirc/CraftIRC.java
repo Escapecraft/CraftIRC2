@@ -1,7 +1,6 @@
 package com.ensifera.animosity.craftirc;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,14 +8,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.milkbowl.vault.chat.Chat;
-import net.minecraft.server.v1_6_R3.DedicatedServer;
 
+//BJORK IMPORTS
+//import net.minecraft.server.v1_6_R3.DedicatedServer;
+//import org.bukkit.craftbukkit.v1_6_R3.CraftServer;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.craftbukkit.v1_6_R3.CraftServer;
+
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -45,7 +48,7 @@ public class CraftIRC extends JavaPlugin {
     //Misc class attributes
     PluginDescriptionFile desc = null;
     public Server server = null;
-    private DedicatedServer console;
+//    private DedicatedServer console;
     private final CraftIRCListener listener = new CraftIRCListener(this);
     private ArrayList<Minebot> instances;
     private boolean debug;
@@ -69,9 +72,9 @@ public class CraftIRC extends JavaPlugin {
             VERSION = desc.getVersion();
             server = this.getServer();
            
-            Field cfield = CraftServer.class.getDeclaredField("console");
-            cfield.setAccessible(true);
-            console = (DedicatedServer) cfield.get((CraftServer)getServer());
+//            Field cfield = CraftServer.class.getDeclaredField("console");
+//            cfield.setAccessible(true);
+//            console = (DedicatedServer) cfield.get((CraftServer)getServer());
             
             bots = new ArrayList<ConfigurationNode>(configuration.getNodeList("bots", null));
             colormap = new ArrayList<ConfigurationNode>(configuration.getNodeList("colormap", null));
@@ -779,12 +782,14 @@ public class CraftIRC extends JavaPlugin {
     }
    
     protected void enqueueConsoleCommand(String cmd) {
-      try {
-        console.issueCommand(cmd, console);
-
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),cmd);
+        //BJORK WEIRD NMS WAY OF DOING THIS ^ 
+//      try {
+//        console.issueCommand(cmd, console);
+//
+//      } catch (Exception e) {
+//          e.printStackTrace();
+//      }
     
        
     }
