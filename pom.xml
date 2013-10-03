@@ -4,7 +4,7 @@
   <groupId>com.ensifera</groupId>
   <artifactId>CraftIRC</artifactId>
   <packaging>jar</packaging>
-  <version>2.17-1.6.2-dev</version>
+  <version>2.17-1.6.4-dev</version>
   <name>CraftIRC</name>
   <url>http://www.github.com/animosity/CraftIRC</url>
   <properties>
@@ -37,8 +37,7 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>craftbukkit</artifactId>
-      <version>1.6.2-R0.1-SNAPSHOT</version>
-      <type>jar</type>
+      <version>1.6.4-R0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>net.milkbowl.vault</groupId>
